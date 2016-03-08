@@ -34,7 +34,7 @@ def get_all_sfdc(url_list):
 	#parses each url into BeautifulSoup html
 	for url in url_list:
 		r = requests.get(url)
-		soup = BeautifulSoup(r.content)
+		soup = BeautifulSoup(r.content, "html.parser")
 		html_doc = soup.prettify()
 		sfdc_list = []
 		#finds 'salesforce' in link text of each url
