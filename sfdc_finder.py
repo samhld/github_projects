@@ -3,7 +3,14 @@ from bs4 import BeautifulSoup
 
 #program takes a list of domains 
 
-domains = #put a list of domains in here (csv?)
+def main():
+	domains = [
+		"talkiq.com",
+		"insidesales.com"
+	]
+	url_list = create_url_list(domains)
+	sfdc_list = get_all_sfdc(url_list)
+	print(sfdc_list)
 
 #create url_list by pasting builtwith url to each company domain
 #contained in 'domains'
@@ -11,12 +18,12 @@ domains = #put a list of domains in here (csv?)
 def create_url_list(domains):
 	url_list = []
 	for domain in domains:
-		url_list += requests.get("http://builtwith.com/" + domain + ",")
- 
+		url_list.append("http://builtwith.com/%s" % domain)
+		# url_list += requests.get("http://builtwith.com/" + domain + ",")
 
 	return url_list
 
-create_url_list(domains)
+# create_url_list(domains)
 
 #define function that takes a list of urls
 #then creates html_docs for them using BeautifulSoup
@@ -37,13 +44,5 @@ def get_all_sfdc(url_list):
 				sfdc_list += soup.find("h1").text
 	return 	sfdc_list	
 
-get_all_sfdc(url_list)
-
-
-
-
-
-
-
-
-        
+if __name__ == "__main__":
+	main()
