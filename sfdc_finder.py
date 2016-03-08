@@ -19,7 +19,6 @@ def create_url_list(domains):
 	url_list = []
 	for domain in domains:
 		url_list.append("http://builtwith.com/%s" % domain)
-		# url_list += requests.get("http://builtwith.com/" + domain + ",")
 
 	return url_list
 
