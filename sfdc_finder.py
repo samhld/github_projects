@@ -1,21 +1,24 @@
 import requests
 from bs4 import BeautifulSoup
 
-r = requests.get("http://builtwith.com/talkiq.com")
+#program takes a list of domains 
 
-soup = BeautifulSoup(r.content)
-html_doc = soup.prettify()
+domains = #put a list of domains in here (csv?)
 
-#definte a function that takes an html doc (i.e. 'html_doc')
-#and determines whether 'salesforce' in present anywhere in its 'links'
-#def get_sfdc(html_doc):
- 	#sfdc_list = []
-    #for link in soup.find_all("a"):
-    #if ("salesforce" in link.text):
-    	#return True 
+#create url_list by pasting builtwith url to each company domain
+#contained in 'domains'
+#then separate with commas
+def create_url_list(domains):
+	url_list = []
+	for domain in domains:
+		url_list += requests.get("http://builtwith.com/" + domain + ",")
+ 
 
+	return url_list
 
-#option two is define a function that takes a list of urls
+create_url_list(domains)
+
+#define function that takes a list of urls
 #then creates html_docs for them using BeautifulSoup
 #then checks the link text for "salesforce"
 #then, if contained in link text, adds company domain to 'sfdc_list'
@@ -34,6 +37,7 @@ def get_all_sfdc(url_list):
 				sfdc_list += soup.find("h1").text
 	return 	sfdc_list	
 
+get_all_sfdc(url_list)
 
 
 
