@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import pdb
 
 #program takes a list of domains 
 
@@ -19,7 +20,7 @@ def create_url_list(domains):
 	url_list = []
 	for domain in domains:
 		url_list.append("http://builtwith.com/%s" % domain)
-
+	#print(url_list)
 	return url_list
 
 # create_url_list(domains)
@@ -40,7 +41,9 @@ def get_all_sfdc(url_list):
 		for link in soup.find_all("a"):
 			
 			if ("salesforce" in link.text):
+				pdb.set_trace()
 				sfdc_list += soup.find("h1").text
+				#<h1 class="homeH1 profileH1">INSIDESALES.COM</h1>
 	return 	sfdc_list	
 
 if __name__ == "__main__":
