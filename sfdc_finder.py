@@ -37,11 +37,10 @@ def get_all_sfdc(url_list):
 		soup = BeautifulSoup(r.content, "html.parser")
 		html_doc = soup.prettify()
 		sfdc_list = []
-		#finds 'salesforce' in link text of each url
+		#finds 'Salesforce' in link text of each url
 		for link in soup.find_all("a"):
-			
-			if ("salesforce" in link.text):
-				pdb.set_trace()
+			#pdb.set_trace()
+			if ("Salesforce" in link.text):
 				sfdc_list += soup.find("h1").text
 				#<h1 class="homeH1 profileH1">INSIDESALES.COM</h1>
 	return 	sfdc_list	
